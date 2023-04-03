@@ -7,10 +7,6 @@ import {
 } from '@angular/core';
 import { DropdownPanel } from './dropdown-panel';
 
-// export interface DropdownPanel {
-//   templateRef: TemplateRef<any>;
-//   readonly closed: EventEmitter<void>;
-// }
 @Component({
   selector: 'app-custom-dropdown',
   templateUrl: './custom-dropdown.component.html',

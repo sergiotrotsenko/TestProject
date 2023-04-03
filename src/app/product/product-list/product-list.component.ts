@@ -62,6 +62,7 @@ export class ProductListComponent implements OnInit{
 
   ngOnInit() {
     this.fieldList = [...this.defaultFieldList];
+    // add component store
     this.products$ = this.productsService.getProducts();
     this.products$.subscribe(
       data => {
@@ -71,7 +72,6 @@ export class ProductListComponent implements OnInit{
   }
 
   public setAllProductsChecked(evt) {
-    console.log(evt);
     this.products.forEach(product => {
       product.checked = evt;
     })
@@ -79,7 +79,6 @@ export class ProductListComponent implements OnInit{
   }
 
   public deleteItems() {
-    console.log('delete');
     const checkedProducts = this.products.filter(p => p.checked);
     this.productsService.deleteProduct(checkedProducts).subscribe(
       data => {

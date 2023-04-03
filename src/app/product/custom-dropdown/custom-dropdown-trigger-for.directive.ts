@@ -12,10 +12,7 @@ import { TemplatePortal } from '@angular/cdk/portal';
 import { merge, Observable, Subscription } from 'rxjs';
 
 @Directive({
-  selector: '[appCustomDropdownTriggerFor]',
-  // host: {
-  //   '(click)': 'toggleDropdown()'
-  // }
+  selector: '[appCustomDropdownTriggerFor]'
 })
 export class CustomDropdownTriggerForDirective implements OnDestroy {
   private isDropdownOpen = false;
