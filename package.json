@@ -4,11 +4,11 @@
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
-        "build": "ng build --deploy-url dist/",
+        "build": "ng build",
         "watch": "ng build --watch --configuration development",
         "test": "ng test",
         "postbuild": "npm run deploy",
-        "deploy": "copyfiles -f dist/*.ico ./ && copyfiles -f dist/*.html ./"
+        "deploy": "copyfiles -f dist/*.ico ./ && copyfiles -f dist/*.html ./ && copyfiles -f dist/*.js ./ && copyfiles -f dist/*.css ./"
     },
     "private": true,
     "dependencies": {
