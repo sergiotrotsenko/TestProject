@@ -1,0 +1,75 @@
+.btn-settings {
+
+}
+.filter-menu {
+  display: block;
+  background: white;
+  overflow: hidden;
+  width: 250px;
+  padding: 1em;
+}
+.dropdown-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  background: white;
+  font-size: 1rem;
+  gap: 1em;
+  .drag-handle {
+    display: flex;
+    align-items: center;
+    font-weight: 300;
+    white-space: nowrap;
+    font-size: 1rem;
+    line-height: 3rem;
+    color: var(--drag-handler-color);
+
+  }
+  .dropdown-item-text {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    width: 100%;
+    align-items: center;
+    line-height: 3rem;
+    color: var(--content-font-base-color);
+    border-bottom: 1px solid var(--content-line-color);
+  }
+  .drag-icon {
+    cursor: move;
+    opacity: 1;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+.reset-item {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  background: white;
+  font-size: 14px;
+  margin-top: 1rem;
+  button {
+    width: 100%;
+  }
+}
+.cdk-drag-preview {
+  box-sizing: border-box;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+  0 8px 10px 1px rgba(0, 0, 0, 0.14),
+  0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}

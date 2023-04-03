@@ -1,0 +1,21 @@
+
+<button class="btn btn-settings" [appCustomDropdownTriggerFor]="filterMenu">
+  <i class="fa fa-cog" aria-hidden="true"></i>
+</button>
+<app-custom-dropdown #filterMenu>
+  <div class="filter-menu" cdkDropList (cdkDropListDropped)="dropColumnList($event)">
+    <div cdkDrag *ngFor="let fieldItem of sortedFieldList" class="dropdown-item">
+      <div class="drag-handle">
+        <i class="fa fa-bars drag-icon" aria-hidden="true" cdkDragHandle></i>
+      </div>
+      <div class="dropdown-item-text">
+        <input type="checkbox" [checked]="fieldItem.active"
+               (change)="fieldItem.active = !fieldItem.active; checkChange()"/>
+        <span>{{ fieldItem.name }}</span>
+      </div>
+    </div>
+    <div class="reset-item">
+      <button class="btn-round" (click)="resetList();">Reset to default</button>
+    </div>
+  </div>
+</app-custom-dropdown>

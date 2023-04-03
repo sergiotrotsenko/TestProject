@@ -1,0 +1,74 @@
+<div class="content add-product">
+  <h1>Add Product</h1>
+  <form action="" [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col">
+        <label for="fullName">Product Name <sup>*</sup></label>
+        <input type="text" id="fullName" formControlName="fullName">
+      </div>
+      <div *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)"
+           class="error error-color">
+        <div *ngIf="fullName.errors?.['required']">
+          Product Name is required.
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label for="shortName">Short Name</label>
+        <input type="text" id="shortName" formControlName="shortName">
+      </div>
+      <div *ngIf="shortName.invalid && (shortName.dirty || shortName.touched)"
+           class="error error-color">
+        <div *ngIf="shortName.errors?.['required']">
+          Short Name is required.
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label for="imageUrl">Image <sup>*</sup></label>
+        <input type="text" id="imageUrl" formControlName="imageUrl">
+      </div>
+      <div *ngIf="imageUrl.invalid && (imageUrl.dirty || imageUrl.touched)"
+           class="error error-color">
+        <div *ngIf="imageUrl.errors?.['required']">
+          Image is required.
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label for="price">Price <sup>*</sup></label>
+        <input type="text" id="price" formControlName="price">
+      </div>
+      <div *ngIf="price.invalid && (price.dirty || price.touched)"
+           class="error error-color">
+        <div *ngIf="price.errors?.['required']">
+          Price is required.
+        </div>
+        <div *ngIf="price.errors?.['pattern']">
+          Only numbers.
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label for="postedDate">Post Date <sup>*</sup></label>
+        <input type="text" id="postedDate" formControlName="postedDate">
+      </div>
+      <div *ngIf="postedDate.invalid && (postedDate.dirty || postedDate.touched)"
+           class="error error-color">
+        <div *ngIf="postedDate.errors?.['required']">
+          Post Date is required.
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col buttons">
+        <button class="btn-round" (click)="back(); false;">Cancel</button>
+        <button class="btn-round btn-round-primary" type="submit" >Save</button>
+      </div>
+    </div>
+  </form>
+</div>

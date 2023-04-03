@@ -1,0 +1,20 @@
+<ng-container *ngIf="active">
+    <div *ngIf="selector === 'product-checkbox'">
+      <ng-content select="[product-checkbox]"></ng-content>
+    </div>
+    <div *ngIf="selector === 'product-name'">
+      <ng-content select="[product-name]"></ng-content>
+    </div>
+    <div *ngIf="selector === 'product-short-name'">
+      <ng-content select="[product-short-name]"></ng-content>
+    </div>
+    <div *ngIf="selector === 'product-image'">
+      <ng-content select="[product-image]"></ng-content>
+    </div>
+    <div *ngIf="selector === 'product-price'">
+      <ng-content select="[product-price]"></ng-content>
+    </div>
+    <div *ngIf="selector === 'product-post-date'">
+      <ng-content select="[product-post-date]"></ng-content>
+    </div>
+</ng-container>

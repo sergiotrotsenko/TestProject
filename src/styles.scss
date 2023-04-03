@@ -1,1 +1,191 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$TestProject-primary: mat.define-palette(mat.$indigo-palette);
+$TestProject-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$TestProject-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$TestProject-theme: mat.define-light-theme((
+  color: (
+    primary: $TestProject-primary,
+    accent: $TestProject-accent,
+    warn: $TestProject-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($TestProject-theme);
+
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+  --base-color: #E9EFF7;
+  --content-base-color: #FFFFFF;
+  --content-header-color: #F7FAFC;
+  --content-line-color: #D2E4F7;
+  --content-font-header-color: rgba(0, 0, 0, 0.9);
+  --content-font-base-color: rgba(0, 0, 0, 0.6);
+  --font-error: #E8200F;
+  --button-color: #8AA1B8;
+  --button-primary-color: #0273E6;
+  --input-field-border-color: #B0CCEB;
+  --drag-handler-color: #B0CCEB
+}
+
+$base-color: var(--base-color);
+$content-base-color: var(--content-base-color);
+$content-header-color: var(--content-header-color);
+$content-line-color: var(--content-line-color);
+$content-font-header-color: var(--content-font-header-color);
+$content-font-base-color: var(--content-font-base-color);
+$font-error: var(--font-error);
+$button-color: var(--button-color);
+$button-primary-color: var(--button-primary-color);
+$input-field-border-color: var(--input-field-border-color);
+
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: $base-color;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0,
+  'wght' 200,
+  'GRAD' 0,
+  'opsz' 48
+}
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0.5em 1em;
+  background-color: $content-base-color;
+  margin-bottom: 1em;
+}
+.content {
+  background-color: $content-base-color;
+}
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.5rem;
+  font-size: 1rem;
+  line-height: 1;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  background-color: $content-base-color;
+  color: $button-color;
+  &:hover {
+    border-color: $button-color;
+  }
+  &:active {
+    box-shadow: inset 0 3px 5px rgba(0,0,0,0.125);
+  }
+  .fa {
+    font-size: 1.2rem;
+  }
+}
+.btn-round {
+  background-color: $content-base-color;
+  color: $button-color;
+  border: 2px solid $button-color;
+  border-radius: 10rem;
+  display: inline-block;
+  padding: 0.5em 0.75em;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.5;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  &.btn-round-primary {
+    background-color: $button-primary-color;
+    border-color: $button-primary-color;
+    color: $content-base-color;
+  }
+  &:hover {
+    opacity: 0.8;
+  }
+  &:active {
+    box-shadow: inset 0 3px 5px rgba(0,0,0,0.125);
+  }
+}
+.search {
+  display: flex;
+  align-items: center;
+  position: relative;
+  color: $button-color;
+  input[type=text] {
+    width: 100%;
+    padding: 12px 40px;
+    //margin: 8px 0;
+    display: inline-block;
+    border: 1px solid $content-base-color;
+    border-bottom: 1px solid $content-line-color;
+    box-sizing: border-box;
+    &::placeholder {
+      font-size: 1rem;
+    }
+  }
+  .fa {
+    position: absolute;
+    left: 15px;
+    font-size: 1.2rem;
+  }
+}

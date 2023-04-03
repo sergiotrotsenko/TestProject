@@ -1,0 +1,116 @@
+<div class="nav">
+  <div class="product-list-actions">
+    <div class="delete">
+      <button class="btn" (click)="deleteItems()">
+        <i class="fa fa-trash" aria-hidden="true"></i>
+        Delete
+      </button>
+    </div>
+    <div class="add-product">
+      <a class="btn" routerLink="/add-product">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+        Add Product
+      </a>
+    </div>
+    <div class="search">
+      <input type="text" placeholder="Search" [(ngModel)]="searchText"/>
+      <i class="fa fa-search"></i>
+    </div>
+  </div>
+  <div class="product-list-menu">
+    <div class="settings">
+      <app-settings [fieldList]="fieldList" (fieldListChange)="changeList($event)"></app-settings>
+    </div>
+  </div>
+</div>
+<div class="content">
+  <div class="product-list-table">
+    <table>
+      <thead>
+      <tr>
+        <th>
+          <app-product-item [selector]="'product-checkbox'">
+            <div product-checkbox>
+              <input type="checkbox" [(ngModel)]="allChecked" (ngModelChange)="setAllProductsChecked($event)"/>
+            </div>
+          </app-product-item>
+        </th>
+        <ng-container *ngFor="let item of fieldList">
+          <th>
+            <app-product-item [ngClass]="item.selector" class="row-item" [selector]="item.selector"
+                              [active]="item.active">
+              <div product-checkbox>
+                <input type="checkbox"/>
+              </div>
+              <div product-name>
+                Name
+              </div>
+              <div product-short-name>
+                Short Name
+              </div>
+              <div product-image>
+                Image
+              </div>
+              <div product-price>
+                Price
+                <i (click)="priceSort=PriceSortEnum.ascending"
+                   [ngClass]="{'active': priceSort === PriceSortEnum.ascending}"
+                   class="fa fa-arrow-up" aria-hidden="true"></i>
+                <i (click)="priceSort=PriceSortEnum.descending"
+                   [ngClass]="{'active': priceSort === PriceSortEnum.descending}"
+                   class="fa fa-arrow-down" aria-hidden="true"></i>
+              </div>
+              <div product-post-date>
+                Post Date
+              </div>
+            </app-product-item>
+          </th>
+        </ng-container>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let product of (products | sortProducts:priceSort | searchProducts:searchText:'fullName' )">
+        <td>
+          <app-product-item [selector]="'product-checkbox'">
+            <div product-checkbox>
+              <input type="checkbox" [(ngModel)]="product.checked"/>
+            </div>
+          </app-product-item>
+        </td>
+
+        <ng-container *ngFor="let item of fieldList">
+          <td>
+            <app-product-item [ngClass]="item.selector" class="row-item" [selector]="item.selector"
+                              [active]="item.active">
+              <div product-checkbox>
+                <input type="checkbox"/>
+              </div>
+              <div product-name>
+                {{product.fullName}}
+              </div>
+              <div product-short-name>
+                {{product.shortName}}
+              </div>
+              <div product-image>
+                <img [src]="product.imageUrl">
+              </div>
+              <div product-price>
+                {{product.price}}
+              </div>
+              <div product-post-date>
+                {{product.postedDate | date}}
+              </div>
+            </app-product-item>
+          </td>
+        </ng-container>
+
+      </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="6">&nbsp;</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
