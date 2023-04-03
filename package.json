@@ -4,9 +4,11 @@
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
-        "build": "ng build",
+        "build": "ng build --deploy-url dist/",
         "watch": "ng build --watch --configuration development",
-        "test": "ng test"
+        "test": "ng test",
+        "postbuild": "npm run deploy",
+        "deploy": "copyfiles -f dist/*.ico ./ && copyfiles -f dist/*.html ./"
     },
     "private": true,
     "dependencies": {
@@ -22,7 +24,8 @@
         "@angular/router": "^15.0.0",
         "rxjs": "~7.5.0",
         "tslib": "^2.3.0",
-        "zone.js": "~0.12.0"
+        "zone.js": "~0.12.0",
+        "copyfiles": "^2.2.0"
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "^15.0.4",
